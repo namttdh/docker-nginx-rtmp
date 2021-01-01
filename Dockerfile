@@ -201,15 +201,15 @@ RUN mkdir -p /var/cache/nginx/client_temp /var/cache/nginx/fastcgi_temp /var/cac
  rm /etc/nginx/*.default && \
  mkdir /docker-entrypoint.d
 
-COPY docker-entrypoint.sh /
-COPY docker-entrypoint.d /docker-entrypoint.d
+COPY ./docker-entrypoint.sh /
+COPY ./docker-entrypoint.d /docker-entrypoint.d
 
-RUN chmod a+x -R docker-entrypoint.sh docker-entrypoint.d
+RUN chmod a+x -R ./docker-entrypoint.sh ./docker-entrypoint.d
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY conf.d /etc/nginx/conf.d
-COPY rtmp.d /etc/nginx/rtmp.d
-COPY metrics /etc/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./conf.d /etc/nginx/conf.d
+COPY ./rtmp.d /etc/nginx/rtmp.d
+COPY ./metrics /etc/nginx/html
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
